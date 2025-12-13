@@ -25,6 +25,26 @@ Declara el reloj de 50 MHz de entrada para el Timing Analyzer con un comando cre
 Gracias a este archivo, Quartus sabe qué frecuencia debe cumplir, realiza un análisis de tiempos correcto y evita los warnings de falta de 
 archivo SDC y de “timing requirements not met” genéricos.
 
+semaforo_top.qsf - Definición de pines
+======================================
+Este archivo contiene los nombres de los pines de nuestra placa que se conectarán a los puertos de entrada/salida de nuestro proyecto, así como
+los valores de valores de tensión. Se crea autoáticamente y si utilizamos Assignments -> Pin Planner los pines los podemos configurar desde allí.
+Aunque también podemos editar el archivo y escribir los valores directamente, en el ejemplo:
+set_location_assignment PIN_V11 -to clk_50MHz
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to clk_50MHz
+set_location_assignment PIN_AH17 -to rst_n
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rst_n
+set_location_assignment PIN_AF7 -to verde
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to verde
+set_location_assignment PIN_AD5 -to amarillo
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to amarillo
+set_location_assignment PIN_AH3 -to rojo
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rojo
+
+Nota: El IDE de Quartus recomienda no editar este archivo, pero en realidad la precuación que tenemos que tener es si editamos el archivo
+      a mano no utilizar a la vez Pin Planner ya que sobrescribe el archivo.
+
+
 tb_semaforo_top.v – (Banco de prueba para simulación)
 =====================================================
 Para simular el comportamiento del FSM y evitar tiempos elevados de simulación se instancia directamente semaforo_fsm con un reloj 
