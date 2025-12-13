@@ -28,7 +28,7 @@ archivo SDC y de “timing requirements not met” genéricos.
 semaforo_top.qsf - Definición de pines
 ======================================
 Este archivo contiene los nombres de los pines de nuestra placa que se conectarán a los puertos de entrada/salida de nuestro proyecto, así como
-los valores de valores de tensión. Se crea autoáticamente y si utilizamos Assignments -> Pin Planner los pines los podemos configurar desde allí.
+los valores de tensión. Se crea automáticamente y si utilizamos Assignments -> Pin Planner los pines los podemos configurar desde allí.
 Aunque también podemos editar el archivo y escribir los valores directamente, en el ejemplo:
 set_location_assignment PIN_V11 -to clk_50MHz
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to clk_50MHz
