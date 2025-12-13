@@ -1,4 +1,5 @@
-// semaforo_fsm.v
+// Máquina de estados fínita (Moore)
+// semaforo_fsm.v 
 module semaforo_fsm (
     input  wire clk,        // reloj lento (1 Hz) o enable de 1 s
     input  wire rst_n,      // reset activo en bajo
