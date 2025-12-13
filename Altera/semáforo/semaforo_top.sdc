@@ -1,4 +1,4 @@
-# semaforo_top.sdc
+# semaforo_top.sdc 
 
 # 1) Reloj base de 50 MHz en el pin de entrada
 #    Periodo = 20 ns (1 / 50e6)
