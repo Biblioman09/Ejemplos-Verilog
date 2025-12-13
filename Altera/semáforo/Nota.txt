@@ -1,7 +1,7 @@
 Descripción de los archivos del ejemplo:
 
 semaforo_fsm.v – (Lógica de la máquina de estados)
-==================================================
+================================================== 
 Define una FSM tipo Moore con tres estados: S_ROJO, S_VERDE, S_AMARILLO.
 Tiene un registro de estado y un contador de segundos por estado (sec_count) que decide cuándo cambiar de estado (2 s rojo, 5 s verde, 2 s amarillo).
 
