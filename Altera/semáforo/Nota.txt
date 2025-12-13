@@ -1,0 +1,42 @@
+Descripción de los archivos del ejemplo:
+
+semaforo_fsm.v – (Lógica de la máquina de estados)
+==================================================
+Define una FSM tipo Moore con tres estados: S_ROJO, S_VERDE, S_AMARILLO.
+Tiene un registro de estado y un contador de segundos por estado (sec_count) que decide cuándo cambiar de estado (2 s rojo, 5 s verde, 2 s amarillo).
+
+La lógica de siguiente estado usa el valor de sec_count para hacer las transiciones ROJO→VERDE→AMARILLO→ROJO.
+
+Las salidas (rojo, amarillo, verde) dependen solo del estado actual: en cada estado se activa exactamente la luz correspondiente.
+
+semaforo_top.v – (Integración con reloj real de la FPGA)
+========================================================
+Recibe el reloj físico de la placa (clk_50MHz) y un reset y expone las tres salidas del semáforo (leds: rojo, verde y amarillo)​
+
+Implementa un divisor de reloj: un contador que llega a MAX_COUNT para generar un pulso tick_1s equivalente a 1 “segundo lógico” para la FSM.​
+
+Instancia la FSM (semaforo_fsm) y le entrega ese pulso como reloj/enable lento, de forma que en hardware la secuencia cumple los tiempos reales de 2 s, 
+5 s y 2 s.​
+MAX_COUNT se declara como parámetro (opcional), permitiendo usar un valor grande para la FPGA y uno reducido en simulación.
+
+semaforo_top.sdc – Restricciones de tiempo para Quartus
+=======================================================
+Declara el reloj de 50 MHz de entrada para el Timing Analyzer con un comando create_clock asociado al puerto clk_50MHz y periodo de 20 ns.​
+Gracias a este archivo, Quartus sabe qué frecuencia debe cumplir, realiza un análisis de tiempos correcto y evita los warnings de falta de 
+archivo SDC y de “timing requirements not met” genéricos.
+
+tb_semaforo_top.v – (Banco de prueba para simulación)
+=====================================================
+Para simular el comportamiento del FSM y evitar tiempos elevados de simulación se instancia directamente semaforo_fsm con un reloj 
+“lento lógico” donde cada flanco equivale a 1 segundo, sin usar el divisor real de 50 MHz, esto acelera mucho la simulación.
+
+El ejemplo se ha realizado con Quartus Prime Lite V18.1 y la placa QMTECH_CycloneV. Para la simulación se ha utilizado ModelSim-Altera que
+si viene incluido en esta versión de Quartus Prime Lite (no es así en las últimas versiones de Quartus Prime Lite).
+Antes debemos ir a Options -> EDA Tool Options y en ModelSim-Altera escribir la ruta al ejecutable en mi caso: 
+C:\intelFPGA_lite\18.1\modelsim_ase\win32aloem
+Para lanzar la simulación desde Quartus: Tools-> Run Simulation Tool-> RTL Simulation.
+Para cargar el Testbench: Compile -> Compile y selecionamos la ruta a tb_semaforo_top.v 
+Comprobamos que se nos ha abierto en la librería work y hacemos doble clic sobre el archivo. seleccionamos los objetos que queremos visualizar
+y botón derecho Add Wave y corremos la simulación con un tiempo de 100ns
+
+
