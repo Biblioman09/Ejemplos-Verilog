@@ -1,4 +1,5 @@
 // semaforo_top.v
+// Archivo .TOP del ejemplo
 module semaforo_top (
     input  wire clk_50MHz,   // reloj principal de la FPGA (50 MHz)
     input  wire rst_n,       // reset activo en bajo
