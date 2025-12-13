@@ -57,6 +57,6 @@ C:\intelFPGA_lite\18.1\modelsim_ase\win32aloem
 Para lanzar la simulación desde Quartus: Tools-> Run Simulation Tool-> RTL Simulation.
 Para cargar el Testbench: Compile -> Compile y selecionamos la ruta a tb_semaforo_top.v 
 Comprobamos que se nos ha abierto en la librería work y hacemos doble clic sobre el archivo. seleccionamos los objetos que queremos visualizar
-y botón derecho Add Wave y corremos la simulación con un tiempo de 100ns
+y botón derecho Add Wave y corremos la simulación con un tiempo de 150ns
 
 
