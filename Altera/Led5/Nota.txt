@@ -1,0 +1,1 @@
+El ejemplo se ha realizado con Quartus Prime Lite V18.1 y la placa QMTECH_CycloneV.
