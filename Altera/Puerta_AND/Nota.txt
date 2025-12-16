@@ -4,6 +4,12 @@ sin advertencias críticas. Si no lo ponemos podremos sintetizar el código en l
 Dado que el módulo no tiene señal de reloj, no se debe crear un create_clock sobre un puerto inexistente.
 La forma correcta de hacerlo es mediante un reloj virtual tal y como se muestra en el archivo .sdc
 
+Objetivo del .sdc para este ejempo
+==================================
+-> Satisfacer al Timing Analyzer
+-> Modelar que las entradas a y b y la salida y están relacionadas con un sistema de 50 MHz
+-> Eliminar el Critical Warning
+
 El ejemplo se ha realizado con Quartus Prime Lite V18.1 y la placa QMTECH_CycloneV. Para la simulación se ha utilizado ModelSim-Altera que
 si viene incluido en esta versión de Quartus Prime Lite (no es así en las últimas versiones de Quartus Prime Lite).
 Antes debemos ir a Options -> EDA Tool Options y en ModelSim-Altera escribir la ruta al ejecutable en mi caso: 
